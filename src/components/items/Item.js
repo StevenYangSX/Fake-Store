@@ -1,19 +1,25 @@
 import React, { Fragment } from "react";
-
-const Item = ({ brand, name, price, imageUrl }) => {
+import { Link } from "react-router-dom";
+const Item = ({ brand, name, price, imageUrl, id }) => {
   return (
     <Fragment>
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top" src={imageUrl} alt="" />
-          <div class="card-body">
-            <h4 class="card-title">
+      <div className="col">
+        <div className="card">
+          <img className="card-img-top" src={imageUrl} alt="" />
+          <div className="card-body">
+            <h4 className="card-title">
               {brand} {name}
             </h4>
-            <p class="card-text">${price}</p>
-            <a href="#!" class="btn btn-primary">
-              Go somewhere
-            </a>
+            <p className="card-text">
+              ${price} {id}
+            </p>
+
+            <Link to={`/itme/${id}`} className="btn btn-primary">
+              Details
+            </Link>
+            <Link to="#!" className="btn btn-secondary btn-sm">
+              Add to Card
+            </Link>
           </div>
         </div>
       </div>

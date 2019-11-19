@@ -4,10 +4,10 @@ const Nav = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <ul class="nav nav-pills">
-          <li class="nav-item dropdown">
+        <ul className="nav nav-pills">
+          <li className="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle"
+              className="nav-link dropdown-toggle"
               data-toggle="dropdown"
               href="/"
               role="button"
@@ -17,28 +17,28 @@ const Nav = () => {
               Shop
             </a>
             <div
-              class="dropdown-menu"
+              className="dropdown-menu"
               x-placement="bottom-start"
               style={myStyle}
             >
-              <a class="dropdown-item" href="/">
+              <a className="dropdown-item" href="/">
                 Action
               </a>
-              <a class="dropdown-item" href="/">
+              <a className="dropdown-item" href="/">
                 Another action
               </a>
-              <a class="dropdown-item" href="/">
+              <a className="dropdown-item" href="/">
                 Something else here
               </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/">
+              <div className="dropdown-divider"></div>
+              <a className="dropdown-item" href="/">
                 Separated link
               </a>
             </div>
           </li>
-          <li class="nav-item dropdown">
+          <li className="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle"
+              className="nav-link dropdown-toggle"
               data-toggle="dropdown"
               href="/"
               role="button"
@@ -48,21 +48,21 @@ const Nav = () => {
               Brand
             </a>
             <div
-              class="dropdown-menu"
+              className="dropdown-menu"
               x-placement="bottom-start"
               style={myStyle}
             >
-              <a class="dropdown-item" href="/">
+              <a className="dropdown-item" href="/">
                 Action
               </a>
-              <a class="dropdown-item" href="/">
+              <a className="dropdown-item" href="/">
                 Another action
               </a>
-              <a class="dropdown-item" href="/">
+              <a className="dropdown-item" href="/">
                 Something else here
               </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/">
+              <div className="dropdown-divider"></div>
+              <a className="dropdown-item" href="/">
                 Separated link
               </a>
             </div>
