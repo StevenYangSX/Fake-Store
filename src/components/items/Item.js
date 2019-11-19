@@ -14,7 +14,7 @@ const Item = ({ brand, name, price, imageUrl, id }) => {
               ${price} {id}
             </p>
 
-            <Link to={`/itme/${id}`} className="btn btn-primary">
+            <Link to={`/item/${id}`} className="btn btn-primary">
               Details
             </Link>
             <Link to="#!" className="btn btn-secondary btn-sm">

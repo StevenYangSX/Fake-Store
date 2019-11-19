@@ -13,7 +13,8 @@ export default (state = initialState, action) => {
     case GET_ITEM:
       return {
         ...state,
-        item: action.payload
+        item: action.payload,
+        loading: false
       };
     case GET_ITEMS:
       return {

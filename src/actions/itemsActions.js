@@ -3,7 +3,10 @@ import { GET_ITEMS, SET_LOADING, GET_ITEM } from "./types";
 
 export const getItem = id => async dispatch => {
   try {
+    console.log("checking point at getItem() in action.");
+
     setLoading();
+    console.log("loading set to true after call.");
     const res = await axios.get(
       `https://quiet-dawn-64698.herokuapp.com/api/items/${id}`
     );
@@ -30,6 +33,7 @@ export const getItem = id => async dispatch => {
 // };
 export const getItems = () => async dispatch => {
   try {
+    console.log("checking point at getItemsss() in action.");
     setLoading();
     const res = await axios.get(
       "https://quiet-dawn-64698.herokuapp.com/api/items"
@@ -46,6 +50,7 @@ export const getItems = () => async dispatch => {
 
 //set loading to true
 export const setLoading = () => {
+  console.log("set loading to true");
   return {
     type: SET_LOADING
   };

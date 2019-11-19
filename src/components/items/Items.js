@@ -6,6 +6,7 @@ import { getItems } from "../../actions/itemsActions";
 const Items = ({ items: { items, loading }, getItems }) => {
   useEffect(() => {
     getItems();
+    console.log("in items componrnt, loading in usefffect is", loading);
     //eslint-disable-next-line
   }, []);
 
