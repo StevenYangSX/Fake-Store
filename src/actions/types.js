@@ -12,3 +12,5 @@ export const LOGIN_USER_FAIL = "LOGIN_USER_FAIL";
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const GET_USER_CART = 'GET_USER_CART'
+
+export const LOGOUT = 'LOGOUT'

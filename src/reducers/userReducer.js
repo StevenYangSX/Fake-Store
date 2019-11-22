@@ -1,12 +1,14 @@
 import {
   REGISTER_USER_SUCCESS,
   LOGIN_USER,
+  SET_LOADING,
   REGISTER_USER_FAIL,
   USER_LOADED,
   AUTH_ERROR,
   GET_USER_CART,
   LOGIN_USER_SUCCESS,
-  LOGIN_USER_FAIL
+  LOGIN_USER_FAIL,
+  LOGOUT
 } from "../actions/types";
 
 const initialState = {
@@ -14,12 +16,26 @@ const initialState = {
   isAuthenticated: null,
   token: localStorage.getItem("token"),
   error: null,
-  loading: true
+  loading: false
   //cart: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LOGOUT:
+      return {
+        user: null,
+        isAuthenticated: null,
+        token: localStorage.removeItem("token"),
+        error: null,
+        loading: false
+      };
+    case SET_LOADING: {
+      return {
+        ...state,
+        loading: true
+      };
+    }
     case USER_LOADED:
       console.log("Ok in USER_LOADED reducer.");
       return {
@@ -28,15 +44,16 @@ export default (state = initialState, action) => {
         loading: false,
         user: action.payload
       };
+
     case REGISTER_USER_SUCCESS:
     case LOGIN_USER_SUCCESS:
       localStorage.setItem("token", action.payload.token);
       console.log("Reducer register user work.");
       return {
         ...state,
-        ...action.payload,
-        isAuthenticated: true,
-        loading: false
+        token: action.payload,
+        isAuthenticated: false
+        //loading: false
       };
     case REGISTER_USER_FAIL:
     case LOGIN_USER_FAIL:

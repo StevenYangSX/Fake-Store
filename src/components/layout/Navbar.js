@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { loadUser, logout } from "../../actions/userActions";
 
 const Navbar = props => {
-  const [cartFlag, setCartFlag] = useState(false);
-
   useEffect(() => {
-    //props.getCart()
-    if (props.user !== null) {
-      if (props.user.cart !== undefined || props.user.cart !== null) {
-        ///console.log(props.user);
-        setCartFlag(true);
-        console.log("code god here in useEffect when login.", cartFlag);
-      }
+    //if(props.isAuthenticated)
+    if (
+      localStorage.getItem("token") !== undefined &&
+      localStorage.getItem("token") !== null
+    ) {
+      props.loadUser();
     }
-  }, []);
+  }, [props.user.isAuthenticated]);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
@@ -57,32 +55,43 @@ const Navbar = props => {
           </button>
         </form>
         <ul className="navbar-nav mr-right">
-          <li className="nav-item active">
-            <Link className="nav-link" to="/register">
-              Register <span className="sr-only">(current)</span>
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link className="nav-link" to="/login">
-              Login
-            </Link>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/">
-              Cart
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/">
-              Number:
-              {cartFlag === true ? (
-                <p>You have :{props.user.name}</p>
-              ) : (
-                <p>Loading...</p>
-              )}
-            </a>
-          </li>
+          {!props.user.isAuthenticated && (
+            <li className="nav-item active">
+              <Link className="nav-link" to="/register">
+                Register <span className="sr-only">(current)</span>
+              </Link>
+            </li>
+          )}
+          {!props.user.isAuthenticated && (
+            <li className="nav-item">
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
+            </li>
+          )}
+          {props.user.isAuthenticated && (
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                <button onClick={props.logout}>Logout</button>
+              </Link>
+            </li>
+          )}
+          {props.user.isAuthenticated && (
+            <li className="nav-item">
+              <a className="nav-link" href="/">
+                Cart
+              </a>
+            </li>
+          )}
+          {props.user.isAuthenticated && !props.user.loading ? (
+            <li className="nav-item">
+              <p>{props.user.user.cart.length}</p>
+            </li>
+          ) : (
+            <li className="nav-item">
+              <p>loading...</p>
+            </li>
+          )}
         </ul>
       </div>
     </nav>
@@ -93,6 +102,6 @@ const Navbar = props => {
 const mapStateToProps = state => ({
   user: state.user
 });
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, { loadUser, logout })(Navbar);
 
 //export default connect(mapStateToProps, { registerUser, loadUser })(Register);
