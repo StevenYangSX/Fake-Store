@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-const Navbar = () => {
+const Navbar = props => {
+  const [cartFlag, setCartFlag] = useState(false);
+
+  useEffect(() => {
+    //props.getCart()
+    if (props.user !== null) {
+      if (props.user.cart !== undefined || props.user.cart !== null) {
+        ///console.log(props.user);
+        setCartFlag(true);
+        console.log("code god here in useEffect when login.", cartFlag);
+      }
+    }
+  }, []);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
@@ -45,19 +58,29 @@ const Navbar = () => {
         </form>
         <ul className="navbar-nav mr-right">
           <li className="nav-item active">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/register">
               Register <span className="sr-only">(current)</span>
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/login">
               Login
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="/">
               Cart
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/">
+              Number:
+              {cartFlag === true ? (
+                <p>You have :{props.user.name}</p>
+              ) : (
+                <p>Loading...</p>
+              )}
             </a>
           </li>
         </ul>
@@ -66,4 +89,10 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+//map state to props
+const mapStateToProps = state => ({
+  user: state.user
+});
+export default connect(mapStateToProps)(Navbar);
+
+//export default connect(mapStateToProps, { registerUser, loadUser })(Register);

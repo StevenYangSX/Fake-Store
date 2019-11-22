@@ -3,16 +3,15 @@ import { connect } from "react-redux";
 import { getItem } from "../../actions/itemsActions";
 
 const ItemDetails = ({ item, loading, match, getItem }) => {
-  //const { item, loading } = props;
-  console.log("outside use effect cheking: ", loading);
   useEffect(() => {
-    console.log("use effect get called.");
+    //console.log("use effect get called.");
     getItem(match.params.id);
-    console.log("loading in useeffect is", loading);
+    //console.log("loading in useeffect is", loading);
+    //eslint-disable-next-line
   }, []);
 
   if (loading || item === null) {
-    console.log("in loafing 1 phase");
+    //console.log("in loafing 1 phase");
     return <h1>loading...</h1>;
   } // else {
   //   return <h1>{item.name}</h1>;

@@ -10,11 +10,22 @@ import Showcase from "./components/showcase/Showcase";
 import Items from "./components/items/Items";
 import AboutPage from "./components/pages/AboutPage";
 import ItemDetails from "./components/items/ItemDetails";
+import Register from "./components/pages/Register";
+import Login from "./components/pages/Login";
+import axios from "axios";
 
 import "bootswatch/dist/minty/bootstrap.min.css"; //
 import "./App.css";
 
-function App() {
+// if (localStorage.token) {
+//   const token = localStorage.token;
+//   if (token) {
+//     axios.defaults.headers.common["x-auth-token"] = token;
+//   } else {
+//     delete axios.defaults.headers.common["x-auth-token"];
+//   }
+// }
+const App = () => {
   return (
     <Provider store={store}>
       <Router>
@@ -37,10 +48,13 @@ function App() {
           <Route exact path="/about" component={AboutPage} />
 
           <Route exact path="/item/:id" component={ItemDetails} />
+
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </Router>
     </Provider>
   );
-}
+};
 
 export default App;
