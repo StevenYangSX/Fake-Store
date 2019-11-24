@@ -1,6 +1,5 @@
 import {
   REGISTER_USER_SUCCESS,
-  LOGIN_USER,
   SET_LOADING,
   REGISTER_USER_FAIL,
   USER_LOADED,
@@ -8,7 +7,9 @@ import {
   GET_USER_CART,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
-  LOGOUT
+  LOGOUT,
+  REMOVE_ITEM_FROM_CART_SERVER,
+  ADD_ITEM_TO_CART_SERVER
 } from "../actions/types";
 
 const initialState = {
@@ -66,6 +67,13 @@ export default (state = initialState, action) => {
         loading: false,
         user: null,
         error: action.payload
+      };
+
+    case REMOVE_ITEM_FROM_CART_SERVER:
+    case ADD_ITEM_TO_CART_SERVER:
+      return {
+        ...state,
+        user: { cart: action.payload }
       };
     default:
       return state;

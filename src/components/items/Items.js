@@ -3,7 +3,7 @@ import Item from "./Item";
 import { connect } from "react-redux";
 import { getItems } from "../../actions/itemsActions";
 
-const Items = ({ items: { items, loading }, getItems }) => {
+const Items = ({ items: { items, loading }, getItems, addToCart }) => {
   useEffect(() => {
     getItems();
     // console.log("in items componrnt, loading in usefffect is", loading);

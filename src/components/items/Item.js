@@ -1,6 +1,14 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-const Item = ({ brand, name, price, imageUrl, id }) => {
+import { connect } from "react-redux";
+import { addItemToCart, addItemToCartServer } from "../../actions/cartAction";
+
+const Item = props => {
+  const conbinedFunction = id => {
+    props.addItemToCart(id);
+    props.addItemToCartServer(id);
+  };
+  const { brand, name, price, imageUrl, id } = props;
   return (
     <Fragment>
       <div className="col">
@@ -14,12 +22,15 @@ const Item = ({ brand, name, price, imageUrl, id }) => {
               ${price} {id}
             </p>
 
-            <Link to={`/item/${id}`} className="btn btn-primary">
+            <a href={`/item/${id}`} className="btn btn-primary">
               Details
-            </Link>
-            <Link to="#!" className="btn btn-secondary btn-sm">
-              Add to Card
-            </Link>
+            </a>
+            <button
+              onClick={() => conbinedFunction(id)}
+              className="btn btn-secondary btn-sm"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
@@ -27,4 +38,10 @@ const Item = ({ brand, name, price, imageUrl, id }) => {
   );
 };
 
-export default Item;
+//map state to props
+const mapStateToProps = state => ({
+  items: state.items
+});
+export default connect(mapStateToProps, { addItemToCart, addItemToCartServer })(
+  Item
+);

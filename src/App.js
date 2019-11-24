@@ -1,7 +1,13 @@
 import React, { Fragment } from "react";
 import { Provider } from "react-redux";
 import store from "./store";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
+import { connect } from "react-redux";
 
 import Navbar from "./components/layout/Navbar";
 import Nav from "./components/layout/Nav";
@@ -12,10 +18,13 @@ import AboutPage from "./components/pages/AboutPage";
 import ItemDetails from "./components/items/ItemDetails";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
+import Cart from "./components/cart/Cart";
 import axios from "axios";
+import { loadUser } from "./actions/userActions";
 
 import "bootswatch/dist/minty/bootstrap.min.css"; //
 import "./App.css";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 // if (localStorage.token) {
 //   const token = localStorage.token;
@@ -25,7 +34,7 @@ import "./App.css";
 //     delete axios.defaults.headers.common["x-auth-token"];
 //   }
 // }
-const App = () => {
+const App = props => {
   return (
     <Provider store={store}>
       <Router>
@@ -51,6 +60,7 @@ const App = () => {
 
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/cart" component={Cart} />
         </Switch>
       </Router>
     </Provider>
@@ -58,3 +68,8 @@ const App = () => {
 };
 
 export default App;
+//map state to props
+// const mapStateToProps = state => ({
+//   user: state.user
+// });
+// export default connect(mapStateToProps, { loadUser })(App);

@@ -3,7 +3,6 @@ import { SET_LOADING, GET_ITEMS, GET_ITEM } from "../actions/types";
 const initialState = {
   items: null,
   item: null,
-  current: null,
   loading: false,
   error: null
 };

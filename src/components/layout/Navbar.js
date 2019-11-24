@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loadUser, logout } from "../../actions/userActions";
+import {
+  addItemToCart,
+  removeItemFromCart,
+  clearCart
+} from "../../actions/cartAction";
 
 const Navbar = props => {
   useEffect(() => {
@@ -12,7 +17,12 @@ const Navbar = props => {
     ) {
       props.loadUser();
     }
+    if (props.user.user !== null) {
+      props.user.user.cart.map(id => props.addItemToCart(id));
+    }
+    //props.user.user.cart.map(id => props.addItemToCart(id));
   }, [props.user.isAuthenticated]);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
@@ -78,9 +88,9 @@ const Navbar = props => {
           )}
           {props.user.isAuthenticated && (
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" to="/cart">
                 Cart
-              </a>
+              </Link>
             </li>
           )}
           {props.user.isAuthenticated && !props.user.loading ? (
@@ -100,8 +110,15 @@ const Navbar = props => {
 
 //map state to props
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  cart: state.cart
 });
-export default connect(mapStateToProps, { loadUser, logout })(Navbar);
+export default connect(mapStateToProps, {
+  loadUser,
+  logout,
+  addItemToCart,
+  removeItemFromCart,
+  clearCart
+})(Navbar);
 
 //export default connect(mapStateToProps, { registerUser, loadUser })(Register);
