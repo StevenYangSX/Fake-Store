@@ -43,15 +43,15 @@ const Navbar = props => {
       <div className="collapse navbar-collapse" id="navbarColor01">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <Link className="nav-link" to="/">
+            <a className="nav-link" href="/">
               Home <span className="sr-only">(current)</span>
-            </Link>
+            </a>
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link" to="/about">
+            <a className="nav-link" href="/about">
               About
-            </Link>
+            </a>
           </li>
         </ul>
         <form className="form-inline mr-auto my-2 my-lg-0">
