@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loadUser, logout } from "../../actions/userActions";
+import { searchItem } from "../../actions/itemsActions";
 import {
   addItemToCart,
   removeItemFromCart,
@@ -9,6 +10,7 @@ import {
 } from "../../actions/cartAction";
 
 const Navbar = props => {
+  const [searchState, setSearchState] = useState("");
   useEffect(() => {
     //if(props.isAuthenticated)
     if (
@@ -20,9 +22,20 @@ const Navbar = props => {
     if (props.user.user !== null) {
       props.user.user.cart.map(id => props.addItemToCart(id));
     }
+    // if (props.items.redirect === "brand") {
+    //   props.history.push(`items/brand/${searchState}`);
+    //   //console.log(props);
+    // }
+    // if (props.items.redirect === "category") {
+    //   props.history.push(`/category/${searchState}`);
+    // }
     //props.user.user.cart.map(id => props.addItemToCart(id));
   }, [props.user.isAuthenticated]);
 
+  const searchChange = e => {
+    setSearchState(e.target.value);
+    console.log(searchState);
+  };
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
@@ -54,11 +67,28 @@ const Navbar = props => {
             </a>
           </li>
         </ul>
-        <form className="form-inline mr-auto my-2 my-lg-0">
+        <form
+          className="form-inline mr-auto my-2 my-lg-0"
+          onSubmit={e => {
+            e.preventDefault();
+            console.log(
+              "Before submit search form, searchState is ",
+              searchState
+            );
+            // props.searchItem(searchState, (byWhat, byName) => {
+            //   //props.history.push(`/items/${byWhat}/${byName}`);
+            //   console.log(`/items/${byWhat}/${byName}`);
+            //   //console.log(BrowserRouter.push(`/items/${byWhat}/${byName}`));
+            // });
+            props.searchItem(searchState);
+          }}
+        >
           <input
             className="form-control mr-sm-2"
             type="text"
+            value={searchState}
             placeholder="Search"
+            onChange={searchChange}
           />
           <button className="btn btn-secondary my-2 my-sm-0" type="submit">
             Search
@@ -111,14 +141,16 @@ const Navbar = props => {
 //map state to props
 const mapStateToProps = state => ({
   user: state.user,
-  cart: state.cart
+  cart: state.cart,
+  items: state.items
 });
 export default connect(mapStateToProps, {
   loadUser,
   logout,
   addItemToCart,
   removeItemFromCart,
-  clearCart
+  clearCart,
+  searchItem
 })(Navbar);
 
 //export default connect(mapStateToProps, { registerUser, loadUser })(Register);
