@@ -22,7 +22,7 @@ import Cart from "./components/cart/Cart";
 import axios from "axios";
 import { loadUser } from "./actions/userActions";
 
-import "bootswatch/dist/minty/bootstrap.min.css"; //
+import "bootswatch/dist/flatly/bootstrap.min.css"; //
 import "./App.css";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
