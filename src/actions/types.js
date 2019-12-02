@@ -22,3 +22,11 @@ export const CLEAR_CART = 'CLEAR_CART'
 //cart part for server
 export const REMOVE_ITEM_FROM_CART_SERVER = 'REMOVE_ITEM_FROM_CART_SERVER';
 export const ADD_ITEM_TO_CART_SERVER = 'ADD_ITEM_TO_CART_SERVER';
+
+//search part
+export const SEARCH_ITEM_BRAND = "SEARCH_ITEM_BRAND";
+export const SEARCH_ITEM_CAT = "SEARCH_ITEM_CAT";
+export const SEARCH_ITEM_FAIL = "SEARCH_ITEM_FAIL";
+export const SEARCH_ITEM_NAME = "SEARCH_ITEM_NAME";
+//
+export const SET_REDIRECT = "SET_REDIRECT";
