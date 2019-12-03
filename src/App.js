@@ -20,8 +20,10 @@ import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
 import Cart from "./components/cart/Cart";
 import { loadUser } from "./actions/userActions";
+
 import SearchItems from "./components/items/SearchItems";
 import "bootswatch/dist/minty/bootstrap.min.css"; //
+
 import "./App.css";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
