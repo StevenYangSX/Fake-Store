@@ -1,6 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
+//import { loadUser, logout } from "../../actions/userActions";
+import { searchItem } from "../../actions/itemsActions";
 
-const Nav = () => {
+const Nav = props => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,19 +24,25 @@ const Nav = () => {
               x-placement="bottom-start"
               style={myStyle}
             >
-              <a className="dropdown-item" href="/">
-                Action
-              </a>
-              <a className="dropdown-item" href="/">
-                Another action
-              </a>
-              <a className="dropdown-item" href="/">
-                Something else here
-              </a>
+              <p
+                className="dropdown-item"
+                onClick={() => props.searchItem("appliances")}
+              >
+                appliances
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() => props.searchItem("computer")}
+              >
+                computers
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() => props.searchItem("musical instrument")}
+              >
+                Musical Instruments
+              </p>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="/">
-                Separated link
-              </a>
             </div>
           </li>
           <li className="nav-item dropdown">
@@ -52,19 +61,43 @@ const Nav = () => {
               x-placement="bottom-start"
               style={myStyle}
             >
-              <a className="dropdown-item" href="/">
-                Action
-              </a>
-              <a className="dropdown-item" href="/">
-                Another action
-              </a>
-              <a className="dropdown-item" href="/">
-                Something else here
-              </a>
+              <p
+                className="dropdown-item"
+                onClick={() => props.searchItem("alienware")}
+              >
+                Alienware
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() => props.searchItem("audio-Technica")}
+              >
+                Audio-Technica
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() => props.searchItem("behringer")}
+              >
+                Behringer
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() => props.searchItem("google")}
+              >
+                Google
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() => props.searchItem("fender")}
+              >
+                Fender
+              </p>
+              <p
+                className="dropdown-item"
+                onClick={() => props.searchItem("apple")}
+              >
+                Apple
+              </p>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="/">
-                Separated link
-              </a>
             </div>
           </li>
         </ul>
@@ -79,4 +112,13 @@ const myStyle = {
   left: "0px",
   transform: "translate3d(0px, 40px, 0px)"
 };
-export default Nav;
+
+//map state to props
+const mapStateToProps = state => ({
+  user: state.user,
+  cart: state.cart,
+  items: state.items
+});
+export default connect(mapStateToProps, {
+  searchItem
+})(Nav);
