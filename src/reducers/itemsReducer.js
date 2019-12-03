@@ -1,10 +1,20 @@
-import { SET_LOADING, GET_ITEMS, GET_ITEM } from "../actions/types";
+import {
+  SET_LOADING,
+  GET_ITEMS,
+  GET_ITEM,
+  SEARCH_ITEM_BRAND,
+  SEARCH_ITEM_CAT,
+  SEARCH_ITEM_FAIL,
+  SEARCH_ITEM_NAME
+} from "../actions/types";
 
 const initialState = {
   items: null,
   item: null,
   loading: false,
-  error: null
+  error: null,
+  redirect: null,
+  searchInfo: null
 };
 
 export default (state = initialState, action) => {
@@ -25,6 +35,37 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true
+      };
+    case SEARCH_ITEM_NAME:
+      return {
+        ...state,
+        items: action.payload[0],
+        loading: false,
+        redirect: "name",
+        searchInfo: action.payload[1]
+      };
+    case SEARCH_ITEM_BRAND:
+      return {
+        ...state,
+        items: action.payload[0],
+        loading: false,
+        redirect: "brand",
+        searchInfo: action.payload[1]
+      };
+    case SEARCH_ITEM_CAT:
+      return {
+        ...state,
+        items: action.payload[0],
+        loading: false,
+        redirect: "category",
+        searchInfo: action.payload[1]
+      };
+    case SEARCH_ITEM_FAIL:
+      return {
+        ...state,
+        item: [],
+        loading: false,
+        redirect: false
       };
     default:
       return state;

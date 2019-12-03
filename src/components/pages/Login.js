@@ -12,9 +12,8 @@ const Login = props => {
 
   useEffect(() => {
     if (props.user.isAuthenticated) {
-      console.log(
-        "useEffect () get called in Loing compoent after auth is true"
-      );
+      console.log(props);
+
       props.history.push("/");
     }
   }, [props.user.isAuthenticated, props.history]);

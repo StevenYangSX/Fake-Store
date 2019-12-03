@@ -1,0 +1,11 @@
+.quantityZone {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.itemCardContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
