@@ -5,12 +5,14 @@ import {
   CLEAR_CART,
   SET_LOADING,
   REMOVE_ITEM_FROM_CART_SERVER,
-  ADD_ITEM_TO_CART_SERVER
+  REMOVE_ONE_ITEM_FROM_CART,
+  CHECK_OUT
 } from "./types";
 
 export const removeItemFromCart = id => async dispatch => {
   const body = {
-    id: id
+    id: id,
+    allOrSingle: "all"
   };
 
   try {
@@ -69,13 +71,6 @@ export const addItemToCartServer = id => async dispatch => {
   try {
     const res = await axios.post(
       "https://quiet-dawn-64698.herokuapp.com/api/users/cart",
-      // {
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     "x-auth-token": localStorage.getItem("token")
-      //   },
-      //   data: JSON.stringify(body)
-      // }
       body
     );
 
@@ -92,4 +87,44 @@ const setLoading = () => async dispatch => {
   return {
     type: SET_LOADING
   };
+};
+
+export const removeOneItemFromCart = id => async dispatch => {
+  const body = {
+    id: id,
+    allOrSingle: "single"
+  };
+
+  try {
+    console.log("chekc header:", axios.defaults.headers);
+    const res = await axios.delete(
+      "https://quiet-dawn-64698.herokuapp.com/api/users/cart",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": localStorage.getItem("token")
+        },
+        data: JSON.stringify(body)
+      }
+    );
+
+    dispatch({
+      type: REMOVE_ITEM_FROM_CART_SERVER,
+      payload: res.data
+    });
+    dispatch({
+      type: REMOVE_ONE_ITEM_FROM_CART,
+      payload: id
+    });
+  } catch (err) {
+    alert("remove item from cart (server call) get error", err.msg);
+  }
+};
+// removeOneItemFromCartServer
+
+export const checkOut = () => async dispatch => {
+  console.log("get check here.");
+  alert(
+    "Check out function has not been implemented. It's not for this Project"
+  );
 };
