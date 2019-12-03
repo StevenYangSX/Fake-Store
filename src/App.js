@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "./store";
 import {
@@ -19,10 +19,11 @@ import ItemDetails from "./components/items/ItemDetails";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
 import Cart from "./components/cart/Cart";
-import axios from "axios";
 import { loadUser } from "./actions/userActions";
 
-import "bootswatch/dist/flatly/bootstrap.min.css"; //
+import SearchItems from "./components/items/SearchItems";
+import "bootswatch/dist/minty/bootstrap.min.css"; //
+
 import "./App.css";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
@@ -35,10 +36,38 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 //   }
 // }
 const App = props => {
+  // useEffect(() => {
+  //   if (props.items.redirect === "brand") {
+  //     console.log(props);
+
+  //     //props.history.push(`/items/brand/${props.items.redirect}`);
+  //     return <Redirect to="/about" />;
+  //   }
+  //   if (props.items.redirect === "category") {
+  //     console.log(props);
+
+  //     props.history.push(`/items/${props.items.redirect}/`);
+  //   }
+  // }, [props.items.redirect]);
   return (
     <Provider store={store}>
       <Router>
-        <Navbar />
+        {props.items.redirect === "brand" && (
+          <Redirect
+            to={`/items/${props.items.redirect}/${props.items.searchInfo}`}
+          />
+        )}
+        {props.items.redirect === "category" && (
+          <Redirect
+            to={`/items/${props.items.redirect}/${props.items.searchInfo}`}
+          />
+        )}
+        {props.items.redirect === "name" && (
+          <Redirect
+            to={`/items/${props.items.redirect}/${props.items.searchInfo}`}
+          />
+        )}
+        <Navbar {...props} />
         <Nav />
 
         <Switch>
@@ -52,8 +81,11 @@ const App = props => {
                 <Items />
               </Fragment>
             )}
-          ></Route>
+          />
 
+          <Route exact path="/items/brand/:brand" component={SearchItems} />
+          <Route exact path="/items/category/:brand" component={SearchItems} />
+          <Route exact path="/items/name/:name" component={SearchItems} />
           <Route exact path="/about" component={AboutPage} />
 
           <Route exact path="/item/:id" component={ItemDetails} />
@@ -67,9 +99,11 @@ const App = props => {
   );
 };
 
-export default App;
+// export default App;
 //map state to props
-// const mapStateToProps = state => ({
-//   user: state.user
-// });
-// export default connect(mapStateToProps, { loadUser })(App);
+const mapStateToProps = state => ({
+  user: state.user,
+  items: state.items,
+  cart: state.cart
+});
+export default connect(mapStateToProps, { loadUser })(App);
