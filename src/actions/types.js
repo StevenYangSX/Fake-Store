@@ -22,3 +22,12 @@ export const CLEAR_CART = 'CLEAR_CART'
 //cart part for server
 export const REMOVE_ITEM_FROM_CART_SERVER = 'REMOVE_ITEM_FROM_CART_SERVER';
 export const ADD_ITEM_TO_CART_SERVER = 'ADD_ITEM_TO_CART_SERVER';
+
+//control panel actions
+export const SET_PRICE_NULL = "SET_PRICE_NULL";
+export const SET_PRICE_ONE = "SET_PRICE_ONE";
+export const SET_PRICE_TWO = "SET_PRICE_TWO";
+export const SET_PRICE_THREE = "SET_PRICE_THREE";
+
+export const CHANGE_FEATURED = "CHANGE_FEATURED";
+export const CHANGE_ON_SALE = "CHANGE_ON_SALE";
