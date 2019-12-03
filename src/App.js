@@ -19,6 +19,10 @@ import ItemDetails from "./components/items/ItemDetails";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
 import Cart from "./components/cart/Cart";
+
+import FilterPanel from "./components/layout/FilterPanel";
+import axios from "axios";
+
 import { loadUser } from "./actions/userActions";
 
 import SearchItems from "./components/items/SearchItems";
@@ -78,6 +82,7 @@ const App = props => {
               <Fragment>
                 <Flyer />
                 <Showcase />
+                <FilterPanel />
                 <Items />
               </Fragment>
             )}
