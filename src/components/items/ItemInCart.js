@@ -50,38 +50,38 @@ const ItemInCart = props => {
   return (
     <Fragment>
       <div className="container bg-light">
-        <h4>
+        <p>
           {item.brand.name} {item.name} {item.model}
-        </h4>
-        {/* <p>{item._id}</p> */}
-        <div className="itemCardContent">
-          <img
-            src={item.imageUrl}
-            style={{ height: "10rem", width: "10rem" }}
-            alt=""
-          />
-          <p>${item.price}</p>
-          <br />
-          <div className="quantityZone">
-            <p
-              className="btn btn-secondary btn-xs"
-              onClick={() => removeOneItem(item._id)}
-            >
-              -
-            </p>
-            <p>{itemNumber}</p>
-            <p
-              className="btn btn-secondary btn-xs"
-              onClick={() => addOneItem(item._id)}
-            >
-              +
-            </p>
-
-            <button onClick={() => removeItem(item._id)}>Remove</button>
+        </p>
+        <div className="content">
+          <div className="itemImage">
+            <img src={item.imageUrl} alt="" />
+          </div>
+          <div className="price-control">
+            <p>${item.price}</p>
+            <div className="controller">
+              <button onClick={() => removeOneItem(item._id)}>-</button>
+              <p>{itemNumber}</p>
+              <button onClick={() => addOneItem(item._id)}>+</button>
+            </div>
           </div>
         </div>
-        <h5>Product Total</h5>
-        <h5>{(item.price * itemNumber).toFixed(2)}</h5>
+        <button
+          className="btn-remove-mine"
+          onClick={() => removeItem(item._id)}
+        >
+          Remove
+        </button>
+        <br />
+        <br />
+        <div className="bottom">
+          <div className="bottom-left">
+            <p>Product Total</p>
+          </div>
+          <div className="bottom-right">
+            <p>{(item.price * itemNumber).toFixed(2)}</p>
+          </div>
+        </div>
       </div>
     </Fragment>
   );

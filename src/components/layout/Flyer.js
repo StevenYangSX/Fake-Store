@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
-
+import flyer from "../../assets/flyer.webp";
 const Flyer = () => {
   return (
     <Fragment>
-      <div className="jumbotron bg-primary">
-        <h4 className="mr-auto">Flyer goes here.</h4>
-      </div>
+      <img src={flyer} alt="Flyer" style={myStyle} />
     </Fragment>
   );
 };
+
+const myStyle = { width: "100vw", height: "80vh" };
 
 export default Flyer;

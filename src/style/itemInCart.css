@@ -1,11 +1,50 @@
-.quantityZone {
+.content {
     display: flex;
-    justify-items: center;
-    align-items: center;
+    justify-content: space-between;
 }
 
-.itemCardContent {
+.bottom {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+}
+
+.itemImage {
+    flex: 1;
+}
+
+.price-control {
+    flex: 1;
+    align-content: center;
+}
+
+.price-control p {
+    text-align: center;
+}
+
+.itemImage img {
+    max-width: 10rem;
+    max-height: auto;
+}
+
+.controller {
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.controller button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.controller p {
+    flex: 1;
+    border: 0;
+    border-radius: 50%;
+}
+
+.btn-remove-mine {
+    margin-left: 3rem;
 }

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { Provider } from "react-redux";
 import store from "./store";
 import {
@@ -21,38 +21,15 @@ import Login from "./components/pages/Login";
 import Cart from "./components/cart/Cart";
 
 import FilterPanel from "./components/layout/FilterPanel";
-import axios from "axios";
 
 import { loadUser } from "./actions/userActions";
 
 import SearchItems from "./components/items/SearchItems";
-import "bootswatch/dist/minty/bootstrap.min.css"; //
+import "bootswatch/dist/journal/bootstrap.min.css"; //
 
 import "./App.css";
-import PrivateRoute from "./components/routing/PrivateRoute";
 
-// if (localStorage.token) {
-//   const token = localStorage.token;
-//   if (token) {
-//     axios.defaults.headers.common["x-auth-token"] = token;
-//   } else {
-//     delete axios.defaults.headers.common["x-auth-token"];
-//   }
-// }
 const App = props => {
-  // useEffect(() => {
-  //   if (props.items.redirect === "brand") {
-  //     console.log(props);
-
-  //     //props.history.push(`/items/brand/${props.items.redirect}`);
-  //     return <Redirect to="/about" />;
-  //   }
-  //   if (props.items.redirect === "category") {
-  //     console.log(props);
-
-  //     props.history.push(`/items/${props.items.redirect}/`);
-  //   }
-  // }, [props.items.redirect]);
   return (
     <Provider store={store}>
       <Router>
@@ -81,7 +58,7 @@ const App = props => {
             render={props => (
               <Fragment>
                 <Flyer />
-                <Showcase />
+                {/* <Showcase /> */}
                 <FilterPanel />
                 <Items />
               </Fragment>
