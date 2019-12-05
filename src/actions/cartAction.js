@@ -5,8 +5,7 @@ import {
   CLEAR_CART,
   SET_LOADING,
   REMOVE_ITEM_FROM_CART_SERVER,
-  REMOVE_ONE_ITEM_FROM_CART,
-  CHECK_OUT
+  REMOVE_ONE_ITEM_FROM_CART
 } from "./types";
 
 export const removeItemFromCart = id => async dispatch => {
@@ -16,7 +15,7 @@ export const removeItemFromCart = id => async dispatch => {
   };
 
   try {
-    console.log("chekc header:", axios.defaults.headers);
+    // console.log("chekc header:", axios.defaults.headers);
     const res = await axios.delete(
       "https://quiet-dawn-64698.herokuapp.com/api/users/cart",
       {
@@ -47,7 +46,7 @@ export const clearCart = () => async dispatch => {
 
 export const addItemToCart = id => async dispatch => {
   setLoading();
-  console.log("add item to cart get called..");
+  // console.log("add item to cart get called..");
   try {
     const res1 = await axios.get(
       `https://quiet-dawn-64698.herokuapp.com/api/items/${id}`
@@ -67,7 +66,7 @@ export const addItemToCartServer = id => async dispatch => {
   const body = {
     id: id
   };
-  console.log("check body", JSON.stringify(body));
+  // console.log("check body", JSON.stringify(body));
   try {
     const res = await axios.post(
       "https://quiet-dawn-64698.herokuapp.com/api/users/cart",
@@ -96,7 +95,7 @@ export const removeOneItemFromCart = id => async dispatch => {
   };
 
   try {
-    console.log("chekc header:", axios.defaults.headers);
+    // console.log("chekc header:", axios.defaults.headers);
     const res = await axios.delete(
       "https://quiet-dawn-64698.herokuapp.com/api/users/cart",
       {
@@ -123,7 +122,7 @@ export const removeOneItemFromCart = id => async dispatch => {
 // removeOneItemFromCartServer
 
 export const checkOut = () => async dispatch => {
-  console.log("get check here.");
+  // console.log("get check here.");
   alert(
     "Check out function has not been implemented. It's not for this Project"
   );

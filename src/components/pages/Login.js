@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { loginUser, loadUser } from "../../actions/userActions";
+import { loginUser } from "../../actions/userActions";
 import "../../style/myForm.css";
 const Login = props => {
   const [user, setUser] = useState({
@@ -12,10 +12,11 @@ const Login = props => {
 
   useEffect(() => {
     if (props.user.isAuthenticated) {
-      console.log(props);
+      // console.log(props);
 
       props.history.push("/");
     }
+    //eslint-disable-next-line
   }, [props.user.isAuthenticated, props.history]);
 
   const { email, password } = user;
@@ -29,7 +30,7 @@ const Login = props => {
     if (email === "" || password === "") {
       alert("please input valid infomation.");
     } else {
-      console.log("Login submited."); //
+      //console.log("Login submited."); //
       props.loginUser({
         email,
         password
@@ -41,8 +42,8 @@ const Login = props => {
     <Fragment>
       <div className="container text-center register-login-form">
         <form onSubmit={onSubmit}>
-          <div class="form-group">
-            <label for="email">E-mail</label>
+          <div className="form-group">
+            <label>E-mail</label>
 
             <input
               type="text"
@@ -50,15 +51,15 @@ const Login = props => {
               name="email"
               value={email}
               placeholder=""
-              class="form-control"
+              className="form-control"
               onChange={onChange}
               required
             />
 
-            <small class="help-block">Please provide your E-mail</small>
+            <small className="help-block">Please provide your E-mail</small>
           </div>
 
-          <div class="form-group">
+          <div className="form-group">
             <label>Password</label>
 
             <input
@@ -67,21 +68,21 @@ const Login = props => {
               name="password"
               value={password}
               placeholder=""
-              class="form-control"
+              className="form-control"
               onChange={onChange}
               required
             />
-            <small class="help-block">
+            <small className="help-block">
               Password should be at least 6 characters
             </small>
           </div>
 
-          <div class="form-group">
-            <button class="btn btn-primary">Login</button>
+          <div className="form-group">
+            <button className="btn btn-primary">Login</button>
           </div>
 
-          <div class="form-group">
-            <Link to="/register" class="">
+          <div className="form-group">
+            <Link to="/register" className="">
               Register Today
             </Link>
           </div>

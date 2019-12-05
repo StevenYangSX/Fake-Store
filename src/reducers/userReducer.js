@@ -3,8 +3,6 @@ import {
   SET_LOADING,
   REGISTER_USER_FAIL,
   USER_LOADED,
-  AUTH_ERROR,
-  GET_USER_CART,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGOUT,
@@ -38,7 +36,7 @@ export default (state = initialState, action) => {
       };
     }
     case USER_LOADED:
-      console.log("Ok in USER_LOADED reducer.");
+      //   console.log("Ok in USER_LOADED reducer.");
       return {
         ...state,
         isAuthenticated: true,
@@ -49,7 +47,7 @@ export default (state = initialState, action) => {
     case REGISTER_USER_SUCCESS:
     case LOGIN_USER_SUCCESS:
       localStorage.setItem("token", action.payload.token);
-      console.log("Reducer register user work.");
+      // console.log("Reducer register user work.");
       return {
         ...state,
         token: action.payload,
@@ -58,7 +56,7 @@ export default (state = initialState, action) => {
       };
     case REGISTER_USER_FAIL:
     case LOGIN_USER_FAIL:
-      console.log("Reducer register work. But failed.");
+      //  console.log("Reducer register work. But failed.");
       localStorage.removeItem("token");
       return {
         ...state,

@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { addItemToCart, addItemToCartServer } from "../../actions/cartAction";
 import "../../style/item.css";
@@ -8,7 +7,7 @@ const Item = props => {
   const conbinedFunction = id => {
     if (props.user.isAuthenticated) {
       props.addItemToCart(id);
-      console.log(Redirect);
+      //console.log(Redirect);
       props.addItemToCartServer(id);
     } else {
       alert("please register or login first.");
@@ -17,18 +16,18 @@ const Item = props => {
   const { brand, name, price, imageUrl, id } = props;
   return (
     <Fragment>
-      <div class="cards">
-        <div class="card-image">
+      <div className="cards">
+        <div className="card-image">
           <img src={imageUrl} alt="" />
         </div>
-        <div class="card-text">
+        <div className="card-text">
           <h6>
             {" "}
             {brand} {name}
           </h6>
           <p>$ {price}</p>
         </div>
-        <div class="card-buttons">
+        <div className="card-buttons">
           <a href={`/item/${id}`} className="btn btn-primary">
             Details
           </a>

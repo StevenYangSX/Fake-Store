@@ -20,7 +20,7 @@ export const getItem = id => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    console.log(err.message);
+    alert(err);
   }
 };
 
@@ -41,7 +41,7 @@ export const getItems = () => async dispatch => {
 
 //set loading to true
 const setLoading = () => {
-  console.log("set loading to true");
+  // console.log("set loading to true");
   return {
     type: SET_LOADING
   };
@@ -134,7 +134,7 @@ export const searchItem = itemWanted => async dispatch => {
     if (input === "brand") {
       const upperInput =
         itemWanted.charAt(0).toUpperCase() + itemWanted.slice(1);
-      console.log("In searchItem, upperInput is 1:", upperInput);
+      //  console.log("In searchItem, upperInput is 1:", upperInput);
       const res = await axios.get(
         `https://quiet-dawn-64698.herokuapp.com/api/items/brand/${upperInput}`
       );
@@ -143,14 +143,14 @@ export const searchItem = itemWanted => async dispatch => {
       //callback(input, itemWanted);
       //console.log(callback);
     } else if (input === "category") {
-      console.log("In searchItem, upperInput is 2:", itemWanted);
+      //  console.log("In searchItem, upperInput is 2:", itemWanted);
       const res = await axios.get(
         `https://quiet-dawn-64698.herokuapp.com/api/items/category/${itemWanted}`
       );
       dispatch({ type: SEARCH_ITEM_CAT, payload: [res.data, itemWanted] });
       //ownProps.history.push(`/items/category/${itemWanted}`);
     } else if (input === "name") {
-      console.log("In searchItem, upperInput is 3:", itemWanted);
+      //  console.log("In searchItem, upperInput is 3:", itemWanted);
       const upperInput =
         itemWanted.charAt(0).toUpperCase() + itemWanted.slice(1);
       const res = await axios.get(
@@ -158,11 +158,11 @@ export const searchItem = itemWanted => async dispatch => {
       );
       dispatch({ type: SEARCH_ITEM_NAME, payload: [res.data, itemWanted] });
     } else if (input === "notMatch") {
-      console.log("In searchItem, upperInput is 4:", itemWanted);
+      //  console.log("In searchItem, upperInput is 4:", itemWanted);
       dispatch({ type: SEARCH_ITEM_FAIL });
     }
   } catch (err) {
-    console.log("check point 5");
+    //console.log("check point 5");
     alert("Search by brand or category failed.", err);
   }
 };

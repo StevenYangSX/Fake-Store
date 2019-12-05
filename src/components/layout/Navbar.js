@@ -22,24 +22,17 @@ const Navbar = props => {
     if (props.user.user !== null) {
       props.user.user.cart.map(id => props.addItemToCart(id));
     }
-    // if (props.items.redirect === "brand") {
-    //   props.history.push(`items/brand/${searchState}`);
-    //   //console.log(props);
-    // }
-    // if (props.items.redirect === "category") {
-    //   props.history.push(`/category/${searchState}`);
-    // }
-    //props.user.user.cart.map(id => props.addItemToCart(id));
+    //eslint-disable-next-line
   }, [props.user.isAuthenticated]);
 
   const searchChange = e => {
     setSearchState(e.target.value);
-    console.log(searchState);
+    //console.log(searchState);
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
-        <i class="fas fa-shopping-cart"></i>Fake Store
+        <i className="fas fa-shopping-cart"></i>Fake Store
       </a>
       <button
         className="navbar-toggler"
@@ -71,10 +64,10 @@ const Navbar = props => {
           className="form-inline mr-auto my-2 my-lg-0"
           onSubmit={e => {
             e.preventDefault();
-            console.log(
-              "Before submit search form, searchState is ",
-              searchState
-            );
+            // console.log(
+            //   "Before submit search form, searchState is ",
+            //   searchState
+            // );
             props.searchItem(searchState);
           }}
         >
@@ -89,7 +82,7 @@ const Navbar = props => {
             className="btn btn-secondary btn-sm my-2 my-sm-0"
             type="submit"
           >
-            <i class="fa fa-search"></i>
+            <i className="fa fa-search"></i>
           </button>
         </form>
         <ul className="navbar-nav mr-right">

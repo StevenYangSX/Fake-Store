@@ -13,9 +13,9 @@ const Register = props => {
 
   useEffect(() => {
     if (props.user.isAuthenticated) {
-      console.log(
-        "useEffect () get called in regitster compoent after auth is true"
-      );
+      // console.log(
+      //   "useEffect () get called in regitster compoent after auth is true"
+      // );
       props.history.push("/");
     }
   }, [props.user.isAuthenticated, props.history]);
@@ -33,7 +33,7 @@ const Register = props => {
     } else if (password !== password2) {
       alert("Passwords do not match.");
     } else {
-      console.log("Register submited."); //
+      //console.log("Register submited."); //
       props.registerUser({
         name,
         email,
@@ -41,7 +41,7 @@ const Register = props => {
       });
       //props.loadUser();
     }
-    console.log("In regiester page, onsubmit , checking states:", props.user);
+    //console.log("In regiester page, onsubmit , checking states:", props.user);
   };
 
   return (
@@ -49,7 +49,7 @@ const Register = props => {
       <hr />
       <div className="container text-center register-login-form">
         <form onSubmit={onSubmit}>
-          <div class="form-group">
+          <div className="form-group">
             <label>Username: </label>
 
             <input
@@ -58,16 +58,16 @@ const Register = props => {
               name="name"
               value={name}
               placeholder=""
-              class="form-control"
+              className="form-control"
               onChange={onChange}
               required
             />
-            <small class="help-block">
+            <small className="help-block">
               Username can contain any letters or numbers, without spaces
             </small>
           </div>
 
-          <div class="form-group">
+          <div className="form-group">
             <label>E-mail: </label>
 
             <input
@@ -76,14 +76,14 @@ const Register = props => {
               name="email"
               value={email}
               placeholder=""
-              class="form-control"
+              className="form-control"
               onChange={onChange}
               required
             />
-            <p class="help-block">Please provide your E-mail</p>
+            <p className="help-block">Please provide your E-mail</p>
           </div>
 
-          <div class="form-group">
+          <div className="form-group">
             <label>Password: </label>
 
             <input
@@ -92,17 +92,17 @@ const Register = props => {
               name="password"
               value={password}
               placeholder=""
-              class="form-control"
+              className="form-control"
               onChange={onChange}
               required
               minLength="6"
             />
-            <small class="help-block">
+            <small className="help-block">
               Password should be at least 6 characters
             </small>
           </div>
 
-          <div class="form-group">
+          <div className="form-group">
             <label>Password (Confirm)</label>
 
             <input
@@ -111,15 +111,15 @@ const Register = props => {
               name="password2"
               value={password2}
               placeholder=""
-              class="form-control"
+              className="form-control"
               onChange={onChange}
               required
               minLength="6"
             />
-            <p class="help-block">Please confirm password</p>
+            <p className="help-block">Please confirm password</p>
           </div>
 
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" className="btn btn-primary">
             Rigerster
           </button>
         </form>

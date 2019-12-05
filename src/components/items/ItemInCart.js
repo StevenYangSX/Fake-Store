@@ -20,11 +20,12 @@ const ItemInCart = props => {
           0
         )
       ),
+    //eslint-disable-next-line
     []
   );
   const addOneItem = itemId => {
     setItemNumber(itemNumber + 1);
-    console.log("add item button clicked", itemId);
+    // console.log("add item button clicked", itemId);
     props.addItemToCart(itemId);
     props.addItemToCartServer(itemId);
   };
@@ -40,7 +41,7 @@ const ItemInCart = props => {
       return alert("Only One Item. Button disabled.");
     } else {
       setItemNumber(itemNumber - 1);
-      console.log("minus item button clicked", itemId);
+      // console.log("minus item button clicked", itemId);
       props.removeOneItemFromCart(itemId);
       //props.removeOneItemFromCartServer(itemId);
     }

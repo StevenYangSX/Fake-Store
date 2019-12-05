@@ -16,7 +16,7 @@ export const setPriceNull = () => dispatch => {
 
 export const setPriceOne = () => dispatch => {
     ///whatever
-    console.log("button clicked.")
+    //console.log("button clicked.")
     dispatch({
         type: SET_PRICE_ONE,
         payload: [0, 1000]

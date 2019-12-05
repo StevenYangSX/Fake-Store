@@ -28,16 +28,17 @@ export default (state = initialState, action) => {
     case REMOVE_ONE_ITEM_FROM_CART:
       const idArr = [];
       state.items.forEach(ele => idArr.push(ele._id));
-      console.log("check id arr", idArr);
+      //console.log("check id arr", idArr);
       const targetIndex = idArr.indexOf(action.payload);
-      console.log("check targetIdex", targetIndex);
+      // console.log("check targetIdex", targetIndex);
       const fakeState = state.items;
       //console.log(state.items.slice(targetIndex, 1));
       //console.log(temp);
+      //eslint-disable-next-line
       const removed = fakeState.splice(targetIndex, 1);
-      console.log(removed);
-      //maybe need to check target Index
-      console.log(fakeState);
+      // console.log(removed);
+      //  //maybe need to check target Index
+      // console.log(fakeState);
       return {
         ...state,
         loading: false,

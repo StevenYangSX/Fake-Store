@@ -31,20 +31,6 @@ const Items = ({ items: { items, loading }, getItems, control }) => {
     console.log(filteredItems);
   }
 
-  // if (control.ifFeatured !== null) {
-  //   filteredItems = items.filter(
-  //     element => element.isFeatured === control.ifFeatured
-  //   );
-  //   console.log(filteredItems);
-  // }
-
-  // if (control.ifOnSale !== null) {
-  //   filteredItems = items.filter(
-  //     element => element.isOnSale === control.ifOnSale
-  //   );
-  //   console.log(filteredItems);
-  // }
-
   ///////finished partial items
 
   if (loading) {

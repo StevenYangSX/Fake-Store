@@ -16,11 +16,11 @@ const FilterPanel = props => {
       <div className="container text-left">
         <form className="control-form">
           {/* <fieldset class="form-group"> */}
-          <div class="form-check-control">
-            <label class="form-check-label">
+          <div className="form-check-control">
+            <label className="form-check-label">
               <input
                 type="radio"
-                class="form-check-input"
+                className="form-check-input"
                 name="optionsRadios"
                 id="optionsRadios1"
                 value="option1"
@@ -29,11 +29,11 @@ const FilterPanel = props => {
               None
             </label>
           </div>
-          <div class="form-check-control">
-            <label class="form-check-label">
+          <div className="form-check-control">
+            <label className="form-check-label">
               <input
                 type="radio"
-                class="form-check-input"
+                className="form-check-input"
                 name="optionsRadios"
                 id="optionsRadios1"
                 value="option1"
@@ -42,11 +42,11 @@ const FilterPanel = props => {
               $ 0 - 1000
             </label>
           </div>
-          <div class="form-check-control">
-            <label class="form-check-label">
+          <div className="form-check-control">
+            <label className="form-check-label">
               <input
                 type="radio"
-                class="form-check-input"
+                className="form-check-input"
                 name="optionsRadios"
                 id="optionsRadios2"
                 value="option2"
@@ -55,11 +55,11 @@ const FilterPanel = props => {
               $ 1001 - 2000
             </label>
           </div>
-          <div class="form-check-control">
-            <label class="form-check-label">
+          <div className="form-check-control">
+            <label className="form-check-label">
               <input
                 type="radio"
-                class="form-check-input"
+                className="form-check-input"
                 name="optionsRadios"
                 id="optionsRadios2"
                 value="option2"

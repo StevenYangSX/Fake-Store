@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { getItem } from "../../actions/itemsActions";
 import { removeItemFromCart, checkOut } from "../../actions/cartAction";
@@ -25,13 +25,13 @@ const Cart = props => {
   };
   const productTotal = calculateTotal(props.cart.items);
   const productTax = calculateTax(props.cart.items).toFixed(2);
-  console.log(productTotal);
+  //console.log(productTotal);
   return (
     <Fragment>
       <h3 className="text-center">Your Cart</h3>
       {props.cart &&
         filteredItems.map(item => (
-          <Fragment>
+          <Fragment key={item._id}>
             <hr />
             <ItemInCart key={item._id} item={item} />
           </Fragment>
