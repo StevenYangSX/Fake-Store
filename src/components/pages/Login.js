@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { loginUser, loadUser } from "../../actions/userActions";
-
+import "../../style/myForm.css";
 const Login = props => {
   const [user, setUser] = useState({
     email: "",
@@ -39,64 +39,54 @@ const Login = props => {
   };
   return (
     <Fragment>
-      <form class="form-horizontal text-center" onSubmit={onSubmit}>
-        <fieldset>
-          <div id="legend">
-            <legend class="">Login</legend>
+      <div className="container text-center register-login-form">
+        <form onSubmit={onSubmit}>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={email}
+              placeholder=""
+              class="form-control"
+              onChange={onChange}
+              required
+            />
+
+            <small class="help-block">Please provide your E-mail</small>
           </div>
 
-          <div class="control-group">
-            <label class="control-label" for="email">
-              E-mail
-            </label>
-            <div class="controls">
-              <input
-                type="text"
-                id="email"
-                name="email"
-                value={email}
-                placeholder=""
-                class="input-xlarge"
-                onChange={onChange}
-                required
-              />
-              <p class="help-block">Please provide your E-mail</p>
-            </div>
+          <div class="form-group">
+            <label>Password</label>
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              placeholder=""
+              class="form-control"
+              onChange={onChange}
+              required
+            />
+            <small class="help-block">
+              Password should be at least 6 characters
+            </small>
           </div>
 
-          <div class="control-group">
-            <label class="control-label" for="password">
-              Password
-            </label>
-            <div class="controls">
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                placeholder=""
-                class="input-xlarge"
-                onChange={onChange}
-                required
-              />
-              <p class="help-block">Password should be at least 4 characters</p>
-            </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Login</button>
           </div>
 
-          <div class="control-group">
-            <div class="controls">
-              <button class="btn btn-success">Login</button>
-            </div>
+          <div class="form-group">
+            <Link to="/register" class="">
+              Register Today
+            </Link>
           </div>
-          <div class="control-group">
-            <div class="controls">
-              <Link to="/register" class="">
-                Register
-              </Link>
-            </div>
-          </div>
-        </fieldset>
-      </form>
+        </form>
+      </div>
     </Fragment>
   );
 };

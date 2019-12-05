@@ -14,8 +14,8 @@ const SearchItems = ({ items: { items, loading } }) => {
   }
   return (
     <Fragment>
-      <div className="container">
-        <div className="row">
+      <div className="container text-center">
+        <div className="cards-container">
           {!loading && items === null ? (
             <p>Nothing found</p>
           ) : (

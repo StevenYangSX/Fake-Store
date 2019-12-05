@@ -1,4 +1,6 @@
 .content {
+    color: white;
+    background: rgb(54, 54, 54);
     display: flex;
     justify-content: space-between;
 }

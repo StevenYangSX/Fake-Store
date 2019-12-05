@@ -1,0 +1,8 @@
+.register-login-form {
+    color: rgb(228, 227, 227);
+    margin: 0 20vw;
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}

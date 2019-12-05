@@ -1,0 +1,21 @@
+.item-details {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title {
+    padding-top: 5rem;
+}
+
+@media(max-width: 380px) {
+    .item-image img {
+        max-width: 18rem;
+    }
+}
+
+
+.item-des {
+    padding-top: 3rem;
+}

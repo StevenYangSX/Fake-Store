@@ -12,7 +12,6 @@ import { connect } from "react-redux";
 import Navbar from "./components/layout/Navbar";
 import Nav from "./components/layout/Nav";
 import Flyer from "./components/layout/Flyer";
-import Showcase from "./components/showcase/Showcase";
 import Items from "./components/items/Items";
 import AboutPage from "./components/pages/AboutPage";
 import ItemDetails from "./components/items/ItemDetails";
@@ -25,7 +24,7 @@ import FilterPanel from "./components/layout/FilterPanel";
 import { loadUser } from "./actions/userActions";
 
 import SearchItems from "./components/items/SearchItems";
-import "bootswatch/dist/journal/bootstrap.min.css"; //
+import "bootswatch/dist/cyborg/bootstrap.min.css"; //
 
 import "./App.css";
 
@@ -58,7 +57,8 @@ const App = props => {
             render={props => (
               <Fragment>
                 <Flyer />
-                {/* <Showcase /> */}
+                <hr />
+
                 <FilterPanel />
                 <Items />
               </Fragment>

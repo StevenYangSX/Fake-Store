@@ -37,9 +37,9 @@ const Navbar = props => {
     console.log(searchState);
   };
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
-        Fake Store
+        <i class="fas fa-shopping-cart"></i>Fake Store
       </a>
       <button
         className="navbar-toggler"
@@ -61,7 +61,7 @@ const Navbar = props => {
             </a>
           </li>
 
-          <li className="nav-item">
+          <li className="nav-item active">
             <a className="nav-link" href="/about">
               About
             </a>
@@ -75,11 +75,6 @@ const Navbar = props => {
               "Before submit search form, searchState is ",
               searchState
             );
-            // props.searchItem(searchState, (byWhat, byName) => {
-            //   //props.history.push(`/items/${byWhat}/${byName}`);
-            //   console.log(`/items/${byWhat}/${byName}`);
-            //   //console.log(BrowserRouter.push(`/items/${byWhat}/${byName}`));
-            // });
             props.searchItem(searchState);
           }}
         >
@@ -90,8 +85,11 @@ const Navbar = props => {
             placeholder="Search"
             onChange={searchChange}
           />
-          <button className="btn btn-secondary my-2 my-sm-0" type="submit">
-            Search
+          <button
+            className="btn btn-secondary btn-sm my-2 my-sm-0"
+            type="submit"
+          >
+            <i class="fa fa-search"></i>
           </button>
         </form>
         <ul className="navbar-nav mr-right">
@@ -103,7 +101,7 @@ const Navbar = props => {
             </li>
           )}
           {!props.user.isAuthenticated && (
-            <li className="nav-item">
+            <li className="nav-item active">
               <Link className="nav-link" to="/login">
                 Login
               </Link>
@@ -112,24 +110,35 @@ const Navbar = props => {
           {props.user.isAuthenticated && (
             <li className="nav-item">
               <Link className="nav-link" to="/">
-                <button onClick={props.logout}>Logout</button>
+                <button
+                  className="btn btn-outline-primary"
+                  onClick={props.logout}
+                >
+                  Logout
+                </button>
               </Link>
             </li>
           )}
           {props.user.isAuthenticated && (
             <li className="nav-item">
               <Link className="nav-link" to="/cart">
-                Cart
+                <button className="btn btn-outline-primary">
+                  <i className="fas fa-shopping-cart"></i>
+                </button>
               </Link>
             </li>
           )}
           {props.user.isAuthenticated && !props.user.loading ? (
             <li className="nav-item">
-              <p>{props.user.user.cart.length}</p>
+              <Link className="nav-link" to="/cart">
+                <button className="btn btn-primary btn-sm">
+                  {props.user.user.cart.length}
+                </button>
+              </Link>
             </li>
           ) : (
             <li className="nav-item">
-              <p>loading...</p>
+              <p></p>
             </li>
           )}
         </ul>

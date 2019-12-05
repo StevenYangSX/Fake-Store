@@ -2,7 +2,7 @@ import React, { useEffect, Fragment, useState } from "react";
 import Item from "./Item";
 import { connect } from "react-redux";
 import { getItems } from "../../actions/itemsActions";
-
+import "../../style/item.css";
 const Items = ({ items: { items, loading }, getItems, control }) => {
   useEffect(() => {
     getItems();
@@ -52,8 +52,8 @@ const Items = ({ items: { items, loading }, getItems, control }) => {
   }
   return (
     <Fragment>
-      <div className="container">
-        <div className="row">
+      <div className="container text-center">
+        <div className="cards-container">
           {!loading && items === null ? (
             <p>Loading...</p>
           ) : (
@@ -70,13 +70,15 @@ const Items = ({ items: { items, loading }, getItems, control }) => {
                 />
               ))
           )}
-          {/* {showItems(items)} */}
         </div>
-        <br />
-        <br />
-        <h4 className="btn btn-primary btn-lg center" onClick={moreItems}>
-          More
-        </h4>
+
+        <hr />
+
+        <div className=" text-center">
+          <button className="btn btn-primary btn-lg" onClick={moreItems}>
+            More
+          </button>
+        </div>
       </div>
     </Fragment>
   );

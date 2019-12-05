@@ -8,12 +8,15 @@ import {
   changeFeatured,
   changeOnSale
 } from "../../actions/controlAction";
+import "../../style/controlPanel.css";
+
 const FilterPanel = props => {
   return (
     <Fragment>
-      <form>
-        <fieldset class="form-group">
-          <div class="form-check">
+      <div className="container text-left">
+        <form className="control-form">
+          {/* <fieldset class="form-group"> */}
+          <div class="form-check-control">
             <label class="form-check-label">
               <input
                 type="radio"
@@ -26,7 +29,7 @@ const FilterPanel = props => {
               None
             </label>
           </div>
-          <div class="form-check">
+          <div class="form-check-control">
             <label class="form-check-label">
               <input
                 type="radio"
@@ -39,7 +42,7 @@ const FilterPanel = props => {
               $ 0 - 1000
             </label>
           </div>
-          <div class="form-check">
+          <div class="form-check-control">
             <label class="form-check-label">
               <input
                 type="radio"
@@ -52,7 +55,7 @@ const FilterPanel = props => {
               $ 1001 - 2000
             </label>
           </div>
-          <div class="form-check">
+          <div class="form-check-control">
             <label class="form-check-label">
               <input
                 type="radio"
@@ -65,35 +68,8 @@ const FilterPanel = props => {
               $ 3000 above
             </label>
           </div>
-
-          <br />
-
-          {/* <div class="form-check">
-            <label class="form-check-label">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                onClick={props.changeFeatured}
-              />
-              Featured Products
-            </label>
-          </div>
-          <br />
-
-          <div class="form-check">
-            <label class="form-check-label">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                onClick={props.changeOnSale}
-              />
-              On Sale
-            </label>
-          </div> */}
-        </fieldset>
-      </form>
+        </form>
+      </div>
     </Fragment>
   );
 };

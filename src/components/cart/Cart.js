@@ -28,26 +28,28 @@ const Cart = props => {
   console.log(productTotal);
   return (
     <Fragment>
-      <h3>Your Cart</h3>
+      <h3 className="text-center">Your Cart</h3>
       {props.cart &&
         filteredItems.map(item => (
           <Fragment>
-            <br />
-            <br />
+            <hr />
             <ItemInCart key={item._id} item={item} />
           </Fragment>
         ))}
 
-      <br />
-      <br />
-      <div className="container">
+      <hr />
+      <div className="container text-right">
         <p>Product Subtotal: ${productTotal}</p>
         <p>Tax: ${productTax}</p>
         <p>
           Total after Tax: ${parseFloat(productTotal) + parseFloat(productTax)}{" "}
         </p>
       </div>
-      <button onClick={props.checkOut}>Check Out</button>
+      <div className="container text-right">
+        <button className="btn btn-primary" onClick={props.checkOut}>
+          Check Out
+        </button>
+      </div>
     </Fragment>
   );
 };

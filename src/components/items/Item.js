@@ -1,37 +1,43 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { addItemToCart, addItemToCartServer } from "../../actions/cartAction";
+import "../../style/item.css";
 
 const Item = props => {
   const conbinedFunction = id => {
-    props.addItemToCart(id);
-    props.addItemToCartServer(id);
+    if (props.user.isAuthenticated) {
+      props.addItemToCart(id);
+      console.log(Redirect);
+      props.addItemToCartServer(id);
+    } else {
+      alert("please register or login first.");
+    }
   };
   const { brand, name, price, imageUrl, id } = props;
   return (
     <Fragment>
-      <div className="col">
-        <div className="card">
-          <img className="card-img-top" src={imageUrl} alt="" />
-          <div className="card-body">
-            <h4 className="card-title">
-              {brand} {name}
-            </h4>
-            <p className="card-text">
-              ${price} {id}
-            </p>
-
-            <a href={`/item/${id}`} className="btn btn-primary">
-              Details
-            </a>
-            <button
-              onClick={() => conbinedFunction(id)}
-              className="btn btn-secondary btn-sm"
-            >
-              Add to Cart
-            </button>
-          </div>
+      <div class="cards">
+        <div class="card-image">
+          <img src={imageUrl} alt="" />
+        </div>
+        <div class="card-text">
+          <h6>
+            {" "}
+            {brand} {name}
+          </h6>
+          <p>$ {price}</p>
+        </div>
+        <div class="card-buttons">
+          <a href={`/item/${id}`} className="btn btn-primary">
+            Details
+          </a>
+          <button
+            onClick={() => conbinedFunction(id)}
+            className="btn btn-warning"
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </Fragment>
@@ -40,7 +46,8 @@ const Item = props => {
 
 //map state to props
 const mapStateToProps = state => ({
-  items: state.items
+  items: state.items,
+  user: state.user
 });
 export default connect(mapStateToProps, { addItemToCart, addItemToCartServer })(
   Item

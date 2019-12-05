@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { registerUser, loadUser } from "../../actions/userActions";
+import "../../style/myForm.css";
 
 const Register = props => {
   const [user, setUser] = useState({
@@ -45,101 +46,84 @@ const Register = props => {
 
   return (
     <Fragment>
-      <h3>register page.</h3>
+      <hr />
+      <div className="container text-center register-login-form">
+        <form onSubmit={onSubmit}>
+          <div class="form-group">
+            <label>Username: </label>
 
-      <form class="form-horizontal text-center" onSubmit={onSubmit}>
-        <fieldset>
-          <div id="legend">
-            <legend class="">Register</legend>
+            <input
+              type="text"
+              id="username"
+              name="name"
+              value={name}
+              placeholder=""
+              class="form-control"
+              onChange={onChange}
+              required
+            />
+            <small class="help-block">
+              Username can contain any letters or numbers, without spaces
+            </small>
           </div>
 
-          <div class="control-group">
-            <label class="control-label" for="username">
-              Username
-            </label>
-            <div class="controls">
-              <input
-                type="text"
-                id="username"
-                name="name"
-                value={name}
-                placeholder=""
-                class="input-xlarge"
-                onChange={onChange}
-                required
-              />
-              <p class="help-block">
-                Username can contain any letters or numbers, without spaces
-              </p>
-            </div>
+          <div class="form-group">
+            <label>E-mail: </label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              placeholder=""
+              class="form-control"
+              onChange={onChange}
+              required
+            />
+            <p class="help-block">Please provide your E-mail</p>
           </div>
 
-          <div class="control-group">
-            <label class="control-label" for="email">
-              E-mail
-            </label>
-            <div class="controls">
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                placeholder=""
-                class="input-xlarge"
-                onChange={onChange}
-                required
-              />
-              <p class="help-block">Please provide your E-mail</p>
-            </div>
+          <div class="form-group">
+            <label>Password: </label>
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              placeholder=""
+              class="form-control"
+              onChange={onChange}
+              required
+              minLength="6"
+            />
+            <small class="help-block">
+              Password should be at least 6 characters
+            </small>
           </div>
 
-          <div class="control-group">
-            <label class="control-label" for="password">
-              Password
-            </label>
-            <div class="controls">
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                placeholder=""
-                class="input-xlarge"
-                onChange={onChange}
-                required
-                minLength="6"
-              />
-              <p class="help-block">Password should be at least 4 characters</p>
-            </div>
+          <div class="form-group">
+            <label>Password (Confirm)</label>
+
+            <input
+              type="password"
+              id="password2"
+              name="password2"
+              value={password2}
+              placeholder=""
+              class="form-control"
+              onChange={onChange}
+              required
+              minLength="6"
+            />
+            <p class="help-block">Please confirm password</p>
           </div>
 
-          <div class="control-group">
-            <label class="control-label" for="password_confirm">
-              Password (Confirm)
-            </label>
-            <div class="controls">
-              <input
-                type="password"
-                id="password2"
-                name="password2"
-                value={password2}
-                placeholder=""
-                class="input-xlarge"
-                onChange={onChange}
-                required
-                minLength="6"
-              />
-              <p class="help-block">Please confirm password</p>
-            </div>
-          </div>
-
-          <div class="control-group">
-            <div class="controls">
-              <button class="btn btn-success">Register</button>
-            </div>
-          </div>
-        </fieldset>
-      </form>
+          <button type="submit" class="btn btn-primary">
+            Rigerster
+          </button>
+        </form>
+      </div>
     </Fragment>
   );
 };
