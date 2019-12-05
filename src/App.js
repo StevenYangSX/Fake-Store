@@ -61,6 +61,8 @@ const App = props => {
 
                 <FilterPanel />
                 <Items />
+                <hr />
+                <hr />
               </Fragment>
             )}
           />

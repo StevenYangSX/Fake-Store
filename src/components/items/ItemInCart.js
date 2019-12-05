@@ -67,7 +67,7 @@ const ItemInCart = props => {
           </div>
         </div>
         <button
-          className="btn-remove-mine"
+          className="btn-remove-mine btn btn-warning"
           onClick={() => removeItem(item._id)}
         >
           Remove

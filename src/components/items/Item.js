@@ -32,12 +32,13 @@ const Item = props => {
           <a href={`/item/${id}`} className="btn btn-primary">
             Details
           </a>
-          <button
+          <a
+            href="#!"
             onClick={() => conbinedFunction(id)}
             className="btn btn-warning"
           >
             Add to Cart
-          </button>
+          </a>
         </div>
       </div>
     </Fragment>
