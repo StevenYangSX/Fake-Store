@@ -1,7 +1,5 @@
 body {
-    background: black;
-    color: white;
-    background: url("./assets/background.jpeg") center center/cover;
-
-
+  background: black;
+  color: white;
+  background: url("./assets/background.jpeg") center center/cover;
 }
